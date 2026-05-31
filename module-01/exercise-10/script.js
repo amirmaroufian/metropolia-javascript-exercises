@@ -1,14 +1,22 @@
-const startYear = Number(prompt("Enter start year:"));
-const endYear = Number(prompt("Enter end year:"));
+const numberOfDice = Number(prompt("Number of dice:"));
+const targetSum = Number(prompt("Desired sum:"));
 
-let html = "<ul>";
+const simulations = 100000;
+let matches = 0;
 
-for (let year = startYear; year <= endYear; year++) {
-    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
-        html += `<li>${year}</li>`;
+for (let i = 0; i < simulations; i++) {
+    let sum = 0;
+
+    for (let j = 0; j < numberOfDice; j++) {
+        sum += Math.floor(Math.random() * 6) + 1;
+    }
+
+    if (sum === targetSum) {
+        matches++;
     }
 }
 
-html += "</ul>";
+const probability = (matches / simulations) * 100;
 
-document.body.innerHTML = html;
+document.body.innerHTML =
+    `<p>Probability to get sum ${targetSum} with ${numberOfDice} dice is approximately ${probability.toFixed(2)}%</p>`;

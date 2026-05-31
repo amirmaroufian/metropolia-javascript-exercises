@@ -1,10 +1,14 @@
-let numbers = [];
-
-for (let i = 0; i < 5; i++) {
-    let input = prompt(`Enter number ${i + 1}:`);
-    numbers.push(Number(input));
+function rollDice() {
+    return Math.floor(Math.random() * 6) + 1;
 }
 
-for (let i = numbers.length - 1; i >= 0; i--) {
-    console.log(numbers[i]);
-}
+document.write("<ul>");
+
+let roll;
+
+do {
+    roll = rollDice();
+    document.write(`<li>${roll}</li>`);
+} while (roll !== 6);
+
+document.write("</ul>");

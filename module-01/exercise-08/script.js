@@ -1,16 +1,14 @@
-const calculate = confirm("Should I calculate the square root?");
+const startYear = Number(prompt("Enter start year:"));
+const endYear = Number(prompt("Enter end year:"));
 
-if (calculate) {
-    const number = Number(prompt("Enter a number:"));
+let html = "<ul>";
 
-    if (number < 0) {
-        document.body.innerHTML =
-            "The square root of a negative number is not defined";
-    } else {
-        document.body.innerHTML =
-            "The square root of " + number + " is " + Math.sqrt(number);
+for (let year = startYear; year <= endYear; year++) {
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+        html += `<li>${year}</li>`;
     }
-} else {
-    document.body.innerHTML =
-        "The square root is not calculated.";
 }
+
+html += "</ul>";
+
+document.body.innerHTML = html;

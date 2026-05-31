@@ -1,16 +1,10 @@
-const calculate = confirm("Should I calculate the square root?");
+let numbers = [];
 
-if (calculate) {
-    const number = Number(prompt("Enter a number:"));
+for (let i = 0; i < 5; i++) {
+    let input = prompt(`Enter number ${i + 1}:`);
+    numbers.push(Number(input));
+}
 
-    if (number < 0) {
-        document.body.innerHTML =
-            "The square root of a negative number is not defined";
-    } else {
-        document.body.innerHTML =
-            "The square root of " + number + " is " + Math.sqrt(number);
-    }
-} else {
-    document.body.innerHTML =
-        "The square root is not calculated.";
+for (let i = numbers.length - 1; i >= 0; i--) {
+    console.log(numbers[i]);
 }
